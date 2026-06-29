@@ -1,29 +1,33 @@
 ---
+title: Arcessa Documentation - MCP and A2A Gateway Control Plane
+description: Technical documentation for Arcessa, the governed control plane for MCP tools and A2A agents with OAuth, SSO, SCIM, policies, guardrails, budgets, audit, and production testing.
 icon: lucide/shield-check
 ---
 
-# Arcessa documentation
+# Arcessa Documentation
 
-<div class="arcessa-hero" markdown>
+Welcome to the documentation for **Arcessa** - a governed control plane for MCP tools and A2A agents.
 
-This is the technical documentation for Arcessa.
+Use these docs to run Arcessa, connect AI clients, register tools and agents, configure identity, enforce governance, inspect audit trails, and operate production-like test environments.
 
-Use it to run the product, connect MCP clients, configure identity, register tools and agents, enforce governance, inspect audit trails, and operate production-like test environments.
+## Table Of Contents
 
-[Start local quickstart](get-started/quickstart.md){ .md-button .md-button--primary }
-[Tour the product](get-started/first-tour.md){ .md-button }
-[See all capabilities](concepts/capability-map.md){ .md-button }
-[Landing site](https://arcessahq.github.io/web/){ .md-button }
+1. [What is Arcessa?](get-started/what-is-arcessa.md) - A plain-English introduction for first-time technical readers
+2. [Quickstart](get-started/quickstart.md) - Run Arcessa locally and make your first governed MCP call
+3. [First Product Tour](get-started/first-tour.md) - What to click in the UI and what each area means
+4. [Capability Map](concepts/capability-map.md) - Complete product surface across MCP, A2A, identity, governance, observability, and operations
+5. [Request Lifecycle](concepts/request-lifecycle.md) - How MCP and A2A calls move through the gateway
+6. [Connect MCP Clients](mcp/connect-clients.md) - Cursor, Claude Desktop, CI, OAuth-capable clients, and static Bearer clients
+7. [Register Tools](mcp/register-tools.md) - Add REST, MCP, WebSocket, SSE, and stdio-backed tools
+8. [A2A Agent Gateway](a2a/agent-gateway.md) - Register agents, serve cards, invoke tasks, stream updates, and receive push callbacks
+9. [OAuth and Tokens](identity/oauth.md) - PATs, API keys, OAuth 2.1, DCR, PKCE, resource-bound tokens, and external IdP bearer exchange
+10. [Policies and Approvals](governance/policies.md) - Allow, block, require approval, argument conditions, and auto-resume
+11. [Audit, Usage, and SIEM](observability/audit-usage-siem.md) - Invocation events, usage, cost, session replay, metrics, and SIEM export
+12. [Testing Overview](testing/overview.md) - Unit, integration, e2e, real stack, provider matrix, load, failure, and security testing
 
-<div class="arcessa-pill-row" markdown>
-<span class="arcessa-pill">MCP Gateway</span>
-<span class="arcessa-pill">OAuth AS</span>
-<span class="arcessa-pill">A2A Gateway</span>
-<span class="arcessa-pill">SSO / SCIM</span>
-<span class="arcessa-pill">Audit / SIEM</span>
-</div>
+## Introduction
 
-</div>
+Arcessa sits between AI clients and the tools, APIs, data, and agents they want to call. Instead of giving every IDE, assistant, CI job, or autonomous agent direct credentials to every backend, you point them at one governed endpoint.
 
 ``` mermaid
 flowchart LR
@@ -40,126 +44,113 @@ flowchart LR
   a2a --> obs
 ```
 
-## Start here
+That endpoint becomes the place where the platform team can answer:
 
-- First-time technical reader: [What is Arcessa?](get-started/what-is-arcessa.md)
-- Product/marketing overview: [Arcessa landing site](https://arcessahq.github.io/web/)
-- New operator: [Quickstart](get-started/quickstart.md)
-- Product evaluator: [Capability map](concepts/capability-map.md)
-- Local developer: [Local development](get-started/local-dev.md)
-- Cursor or Claude user: [Connect MCP clients](mcp/connect-clients.md)
-- Developer testing tools: [Developer Console](console/developer-console.md)
-- Platform admin: [OAuth and API tokens](identity/oauth.md)
-- Security reviewer: [Production hardening](security/production-hardening.md)
-- QA/SRE: [Testing overview](testing/overview.md)
+- What tools and agents exist?
+- Who can discover them?
+- Which client, user, token, team, or org made a call?
+- Was the call allowed, blocked, approved, redacted, cached, or rate-limited?
+- What did it cost?
+- What happened when the upstream failed?
+- Can security and SRE reconstruct the session later?
 
-## Core ideas
+## At A Glance
 
-| Area | What Arcessa provides |
+<div class="arcessa-glance" markdown>
+<div markdown>
+<strong>One endpoint</strong>
+<span>Point Cursor, Claude, CI, and agents at `/mcp` instead of scattering tool URLs and secrets.</span>
+</div>
+<div markdown>
+<strong>Inline governance</strong>
+<span>Apply auth, scopes, tenant visibility, policies, approvals, guardrails, budgets, and caching before calls reach upstreams.</span>
+</div>
+<div markdown>
+<strong>Complete evidence</strong>
+<span>Record audit, usage, cost, sessions, SIEM events, metrics, and failure context for every invocable path.</span>
+</div>
+</div>
+
+## Key Features
+
+- **MCP front door:** one `/mcp` Streamable HTTP endpoint for Cursor, Claude Desktop, CI, and internal agents.
+- **Full MCP surface:** tools, resources, prompts, roots, completion, sampling, elicitation, subscriptions, pagination, progress, and resumable streams.
+- **A2A gateway:** agent registry, signed agent cards, task lifecycle, streaming, push callbacks, protocol dialect handling, and federation.
+- **Identity:** PATs, scoped API keys, OAuth 2.1 authorization server, OIDC, SAML, SCIM, multi-IdP, and external IdP bearer-token exchange.
+- **Governance:** allow, block, require approval, per-argument policy conditions, approvals, and auto-resume.
+- **Safety:** guardrails for PII, secrets, prompt injection, request and response scanning, redact/block/flag actions.
+- **Cost controls:** token/cost attribution, response caching, usage rollups, and budgets by org, team, user, agent, or key.
+- **Observability:** audit trail, usage, session replay, SIEM export, Prometheus metrics, and OpenTelemetry.
+- **Production validation:** Docker real-org stack, provider matrix, official SDK/TCK interop, failure injection, load, chaos, and security scans.
+
+## Quick Example
+
+Run Arcessa:
+
+```bash
+cd /Users/pawan/enterprise-gateway
+cp .env.example .env
+make infra-up
+make dev
+```
+
+Get a token:
+
+```bash
+TOKEN=$(curl -s http://localhost:8080/api/v1/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"admin@local.dev","password":"changeme123"}' \
+  | jq -r .token)
+```
+
+List MCP tools through the governed front door:
+
+```bash
+curl -s http://localhost:8080/mcp \
+  -H "Authorization: Bearer $TOKEN" \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | jq
+```
+
+Connect Cursor:
+
+```json
+{
+  "mcpServers": {
+    "arcessa": {
+      "url": "http://localhost:8080/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:ARCESSA_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+## Common Workflows
+
+| Workflow | Start here |
 |---|---|
-| MCP front door | One `/mcp` endpoint with Streamable HTTP, SSE, resumability, protocol negotiation, and upstream dispatch. |
-| Identity | Local auth, scoped tokens, OAuth 2.1 authorization server, OIDC/SAML SSO, SCIM provisioning, and external IdP bearer-token exchange. |
-| Governance | Policies, approvals, budgets, content guardrails, trust classification, and audit stamping on each invocation. |
-| A2A | Agent registry, agent cards, governed invocations, task lifecycle, push callbacks, streaming, federation, and SDK interop tests. |
-| Observability | ClickHouse audit and usage data, session replay, SIEM export, Prometheus metrics, and OpenTelemetry export. |
-| Operations | Dockerized real-org stack, testcontainers integration tests, provider matrix, failure injection, load tests, and security scans. |
+| Understand the product | [What is Arcessa?](get-started/what-is-arcessa.md) |
+| Run locally | [Quickstart](get-started/quickstart.md) |
+| Click through the UI | [First Product Tour](get-started/first-tour.md) |
+| Connect Cursor or Claude | [Connect MCP Clients](mcp/connect-clients.md) |
+| Add a tool | [Register Tools](mcp/register-tools.md) |
+| Add an agent | [A2A Agent Gateway](a2a/agent-gateway.md) |
+| Choose an auth flow | [OAuth and Tokens](identity/oauth.md) |
+| Configure SSO or provisioning | [SSO and SCIM](identity/sso-scim.md) |
+| Add policy and approvals | [Policies and Approvals](governance/policies.md) |
+| Add guardrails and budgets | [Guardrails and Budgets](governance/guardrails.md) |
+| Debug a developer flow | [Developer Console](console/developer-console.md) |
+| Prove production posture | [Testing Overview](testing/overview.md) |
 
-!!! tip "Use the docs as runnable playbooks"
+## Links
 
-    Most pages include exact commands against `localhost:8080` and assume the local quickstart stack unless the page explicitly says `real` or `production`.
+- **Landing site:** [arcessahq.github.io/web](https://arcessahq.github.io/web/)
+- **Docs source:** [github.com/arcessahq/docs](https://github.com/arcessahq/docs)
+- **Agent index:** [llms.txt](llms.txt)
+- **Sitemap:** [sitemap.xml](sitemap.xml)
 
-## Choose your path
+## License
 
-<div class="grid cards" markdown>
-
--   __Understand the product__
-
-    ---
-
-    Learn the plain-English model: clients, tools, agents, policies, identity, and audit.
-
-    [:octicons-arrow-right-24: What is Arcessa?](get-started/what-is-arcessa.md)
-
--   __Run locally__
-
-    ---
-
-    Bring up infra, backend services, and the Next.js admin UI.
-
-    [:octicons-arrow-right-24: Quickstart](get-started/quickstart.md)
-
--   __Connect an MCP client__
-
-    ---
-
-    Point Cursor, Claude Desktop, CI, or curl at the governed `/mcp` endpoint.
-
-    [:octicons-arrow-right-24: Client setup](mcp/connect-clients.md)
-
--   __Try tools like a developer__
-
-    ---
-
-    Use Browse & Try, Tester, Auth Debugger, Collections, and My Calls.
-
-    [:octicons-arrow-right-24: Developer Console](console/developer-console.md)
-
--   __Pick an auth flow__
-
-    ---
-
-    Use PATs, OAuth 2.1, SSO, SCIM, or external IdP bearer-token exchange.
-
-    [:octicons-arrow-right-24: OAuth and tokens](identity/oauth.md)
-
--   __Validate production behavior__
-
-    ---
-
-    Run unit, integration, e2e, real-org, and provider matrix suites.
-
-    [:octicons-arrow-right-24: Testing overview](testing/overview.md)
-
-</div>
-
-## What Arcessa covers
-
-<div class="grid cards" markdown>
-
--   __Discovery__
-
-    ---
-
-    Catalog MCP tools, REST APIs, prompts, resources, roots, upstream gateways, and agents.
-
--   __Governance__
-
-    ---
-
-    Enforce allow, block, approval, guardrail, budget, trust, and tenant rules inline.
-
--   __Access__
-
-    ---
-
-    Support PATs, API keys, OAuth 2.1, OIDC, SAML, SCIM, and external IdP bearer tokens.
-
--   __Observability__
-
-    ---
-
-    Audit every invocation, track spend and tokens, replay sessions, export to SIEM.
-
--   __Agents__
-
-    ---
-
-    Register A2A agents, serve cards, route tasks, stream updates, and govern output.
-
--   __Production validation__
-
-    ---
-
-    Run Dockerized real-org suites, provider matrices, failure injection, scans, and load tests.
-
-</div>
+The Arcessa documentation repository is licensed under the [MIT License](https://github.com/arcessahq/docs/blob/main/LICENSE).

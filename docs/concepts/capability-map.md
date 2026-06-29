@@ -1,4 +1,5 @@
 ---
+title: Arcessa Capability Map - MCP, A2A, Identity, Governance, Observability, and Operations
 icon: lucide/list-checks
 description: A product-wide map of what Arcessa provides and where each capability fits.
 ---
@@ -6,6 +7,15 @@ description: A product-wide map of what Arcessa provides and where each capabili
 # Capability map
 
 This page is the broad map. Use it when you want to understand everything Arcessa provides without reading the entire codebase or every reference page.
+
+## Table Of Contents
+
+1. [Control-plane areas](#control-plane-areas)
+2. [MCP capabilities](#mcp-capabilities)
+3. [Identity capabilities](#identity-capabilities)
+4. [Governance capabilities](#governance-capabilities)
+5. [Operations capabilities](#operations-capabilities)
+6. [What to read next](#what-to-read-next)
 
 ## Control-plane areas
 

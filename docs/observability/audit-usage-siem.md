@@ -1,4 +1,6 @@
 ---
+title: Arcessa Observability - Audit, Usage, Session Replay, Metrics, and SIEM
+description: Understand Arcessa invocation events, audit trails, usage rollups, session replay, Prometheus metrics, OpenTelemetry, and SIEM export.
 icon: lucide/activity
 ---
 
@@ -7,6 +9,19 @@ icon: lucide/activity
 Every invocable path should emit a unified invocation event. Observability consumes events and builds audit trails, usage rollups, sessions, and SIEM exports.
 
 Observability is not only dashboards. It is the evidence layer for security, SRE, finance, compliance, and developers debugging tool behavior.
+
+## Table Of Contents
+
+1. [Event sources](#event-sources)
+2. [What an invocation event should explain](#what-an-invocation-event-should-explain)
+3. [Audit query](#audit-query)
+4. [Usage summary](#usage-summary)
+5. [Session replay](#session-replay)
+6. [SIEM destination](#siem-destination)
+7. [SIEM formats](#siem-formats)
+8. [Metrics](#metrics)
+9. [Production checks](#production-checks)
+10. [Questions observability should answer](#questions-observability-should-answer)
 
 ## Event sources
 

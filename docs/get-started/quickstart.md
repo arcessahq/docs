@@ -1,10 +1,22 @@
 ---
+title: Arcessa Quickstart - Run the Gateway and Make Your First MCP Call
+description: Start Arcessa locally, sign in, create a token, register a tool, and call it through the governed MCP gateway.
 icon: lucide/play
 ---
 
 # Quickstart
 
 This quickstart runs Arcessa locally and connects a real MCP client or curl request through the gateway.
+
+## What You Will Do
+
+1. Start the Arcessa backend services and infrastructure.
+2. Start the Next.js admin UI.
+3. Sign in as the bootstrap admin.
+4. Mint a bearer token.
+5. Register a simple tool.
+6. Call the gateway through `/mcp`.
+7. Verify the result in the UI and observability views.
 
 ## Requirements
 

@@ -1,4 +1,5 @@
 ---
+title: What is Arcessa? - Governed Gateway for MCP Tools and A2A Agents
 icon: lucide/compass
 description: A plain-English introduction to Arcessa for first-time readers.
 ---
@@ -12,6 +13,16 @@ That sentence is accurate, but a first-time reader usually needs the more practi
 > Arcessa is the place your AI clients and agents connect to before they touch company tools, APIs, data, or other agents.
 
 Instead of giving every assistant direct credentials to every tool, you put Arcessa in the middle. Cursor, Claude Desktop, CI jobs, internal agents, and external partner systems call Arcessa. Arcessa then handles discovery, authentication, authorization, governance, safety checks, metering, routing, and audit.
+
+## Table Of Contents
+
+1. [The problem it solves](#the-problem-it-solves)
+2. [Before and after](#before-and-after)
+3. [The mental model](#the-mental-model)
+4. [What can connect to it?](#what-can-connect-to-it)
+5. [What can sit behind it?](#what-can-sit-behind-it)
+6. [Vocabulary](#vocabulary)
+7. [The first 30 minutes](#the-first-30-minutes)
 
 ## The problem it solves
 

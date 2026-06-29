@@ -9,6 +9,61 @@
     var(--md-default-bg-color);
 }
 
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+}
+
+.md-typeset h2 {
+  font-weight: 650;
+}
+
+.md-typeset h3 {
+  font-weight: 650;
+}
+
+.md-typeset table:not([class]) {
+  font-size: 0.72rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: color-mix(in srgb, var(--md-accent-fg-color) 7%, transparent);
+}
+
+.md-typeset code {
+  border-radius: 0.2rem;
+}
+
+.arcessa-glance {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.arcessa-glance div {
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.35rem;
+  background: color-mix(in srgb, var(--md-accent-fg-color) 4%, transparent);
+}
+
+.arcessa-glance strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.arcessa-glance span {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.72rem;
+}
+
+@media screen and (max-width: 760px) {
+  .arcessa-glance {
+    grid-template-columns: 1fr;
+  }
+}
+
 .arcessa-hero h1 {
   margin: 0 0 0.75rem;
 }

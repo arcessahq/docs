@@ -5,6 +5,8 @@ site_author = "Arcessa"
 site_url = "https://arcessahq.github.io/docs/"
 copyright = "Copyright &copy; 2026 Arcessa"
 extra_css = ["stylesheets/extra.css"]
+repo_url = "https://github.com/arcessahq/docs"
+repo_name = "arcessahq/docs"
 
 nav = [
   { "Home" = "index.md" },
@@ -61,7 +63,6 @@ nav = [
 ]
 
 [project.theme]
-variant = "classic"
 language = "en"
 custom_dir = "overrides"
 features = [
@@ -86,6 +87,7 @@ features = [
 
 [project.theme.icon]
 logo = "lucide/shield-check"
+repo = "fontawesome/brands/github"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
@@ -93,11 +95,15 @@ link = "https://github.com/arcessahq/docs"
 
 [[project.theme.palette]]
 scheme = "default"
+primary = "indigo"
+accent = "indigo"
 toggle.icon = "lucide/sun"
 toggle.name = "Switch to dark mode"
 
 [[project.theme.palette]]
 scheme = "slate"
+primary = "indigo"
+accent = "indigo"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to light mode"
 

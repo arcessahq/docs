@@ -1,4 +1,6 @@
 ---
+title: A2A Agent Gateway - Agent Cards, Tasks, Streaming, Push, and Governance
+description: Register and govern A2A agents through Arcessa with agent cards, task state, streaming, push callbacks, dialect handling, guardrails, and audit.
 icon: lucide/bot
 ---
 
@@ -7,6 +9,18 @@ icon: lucide/bot
 The A2A service lets teams register agents, serve discoverable agent cards, govern invocation, track tasks, receive push updates, and interoperate with real A2A SDK peers.
 
 An agent is not just another URL. It can make decisions, call tools, stream progress, ask for more input, and produce artifacts. That makes agent access a governance problem, not just a routing problem.
+
+## Table Of Contents
+
+1. [What Arcessa adds to A2A](#what-arcessa-adds-to-a2a)
+2. [Register an agent](#register-an-agent)
+3. [Invoke an agent](#invoke-an-agent)
+4. [Streaming invocation](#streaming-invocation)
+5. [Task lifecycle](#task-lifecycle)
+6. [Agent cards](#agent-cards)
+7. [Protocol dialects](#protocol-dialects)
+8. [Push callbacks](#push-callbacks)
+9. [What to test for every agent](#what-to-test-for-every-agent)
 
 ## What Arcessa adds to A2A
 

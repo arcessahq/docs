@@ -1,4 +1,6 @@
 ---
+title: Connect MCP Clients to Arcessa - Cursor, Claude Desktop, OAuth, and Bearer Tokens
+description: Configure Cursor, Claude Desktop, curl, CI, and OAuth-capable MCP clients to connect through the Arcessa MCP gateway.
 icon: lucide/plug-zap
 ---
 
@@ -11,6 +13,13 @@ http://localhost:8080/mcp
 ```
 
 Use a scoped token for clients that only support a static Bearer header. Use OAuth when the client supports authorization server discovery and browser consent.
+
+## Table Of Contents
+
+1. [Cursor with a Personal Access Token](#cursor-with-a-personal-access-token)
+2. [OAuth-capable MCP clients](#oauth-capable-mcp-clients)
+3. [Verify from curl](#verify-from-curl)
+4. [Common failures](#common-failures)
 
 ## Cursor with a Personal Access Token
 

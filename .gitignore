@@ -3,5 +3,6 @@
 .cache/
 .venv/
 site/
+screenshots/
 __pycache__/
 *.py[cod]

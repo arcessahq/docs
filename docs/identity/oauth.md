@@ -1,10 +1,23 @@
 ---
+title: OAuth and Tokens in Arcessa - PATs, API Keys, OAuth 2.1, and External IdP Bearer Exchange
+description: Choose the right Arcessa authentication flow for MCP clients, local tools, CI, enterprise IdPs, OAuth-capable clients, and admin automation.
 icon: lucide/badge-check
 ---
 
 # OAuth and tokens
 
 Arcessa can be the authorization server for MCP clients and can also mint scoped local tokens for clients that cannot do OAuth.
+
+## Table Of Contents
+
+1. [Which flow should I use?](#which-flow-should-i-use)
+2. [Personal Access Tokens](#personal-access-tokens)
+3. [OAuth Authorization Server](#oauth-authorization-server)
+4. [The full OAuth dance](#the-full-oauth-dance)
+5. [Resource-bound access tokens](#resource-bound-access-tokens)
+6. [External IdP bearer-token exchange](#external-idp-bearer-token-exchange)
+7. [2P, 3P, and local-tool patterns](#2p-3p-and-local-tool-patterns)
+8. [Token review checklist](#token-review-checklist)
 
 ## Which flow should I use?
 

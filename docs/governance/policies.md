@@ -1,4 +1,6 @@
 ---
+title: Policies and Approvals in Arcessa
+description: Use Arcessa policies to allow, block, or require approval for MCP tools and A2A agents with argument-aware conditions and auditable auto-resume.
 icon: lucide/scale
 ---
 
@@ -7,6 +9,17 @@ icon: lucide/scale
 Policies decide whether an MCP tool, resource, prompt, or A2A agent call is allowed, blocked, or parked for human approval.
 
 Governance is the reason Arcessa is more than a proxy. A proxy asks "where should this request go?" Governance asks "should this request happen at all, under this identity, with these arguments, right now?"
+
+## Table Of Contents
+
+1. [Policy effects](#policy-effects)
+2. [Policy matching model](#policy-matching-model)
+3. [Require approval for a tool](#require-approval-for-a-tool)
+4. [Block by argument condition](#block-by-argument-condition)
+5. [Good policy examples](#good-policy-examples)
+6. [Approval flow](#approval-flow)
+7. [Operational checklist](#operational-checklist)
+8. [Approval quality bar](#approval-quality-bar)
 
 ## Policy effects
 

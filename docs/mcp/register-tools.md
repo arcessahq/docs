@@ -1,4 +1,6 @@
 ---
+title: Register MCP and REST Tools in Arcessa
+description: Add REST, MCP, WebSocket, SSE, stdio, and reverse-proxy tools to the Arcessa catalog with visibility, credentials, governance, caching, and failure testing.
 icon: lucide/wrench
 ---
 
@@ -7,6 +9,19 @@ icon: lucide/wrench
 Tools are catalog entries that the MCP runtime can expose and invoke. A tool can point to a REST endpoint, an MCP HTTP/SSE endpoint, a WebSocket endpoint, or a local stdio command when explicitly enabled.
 
 The catalog is where a raw endpoint becomes an enterprise capability. A URL by itself is not enough. Arcessa also needs to know who owns it, who can see it, how credentials are injected, whether it can be cached, which policies apply, and what audit context to attach.
+
+## Table Of Contents
+
+1. [What counts as a tool?](#what-counts-as-a-tool)
+2. [Minimal REST tool](#minimal-rest-tool)
+3. [MCP upstream tool](#mcp-upstream-tool)
+4. [Tool design checklist](#tool-design-checklist)
+5. [Upstream credentials](#upstream-credentials)
+6. [Auth types](#auth-types)
+7. [Cache behavior](#cache-behavior)
+8. [Visibility checklist](#visibility-checklist)
+9. [Governance checklist](#governance-checklist)
+10. [Failure modes to test](#failure-modes-to-test)
 
 ## What counts as a tool?
 
