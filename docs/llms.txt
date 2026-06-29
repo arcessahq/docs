@@ -1,0 +1,61 @@
+# Arcessa Docs
+
+> Arcessa is a governed control plane for MCP tools and A2A agents. It provides discovery, OAuth and token access, SSO/SCIM provisioning, policy enforcement, guardrails, budgets, audit, usage, session replay, SIEM export, and production-grade test matrices.
+
+Canonical site: https://arcessahq.github.io/docs/
+Landing site: https://arcessahq.github.io/web/
+Source repository: https://github.com/arcessahq/docs
+
+## Start here
+
+- Home: https://arcessahq.github.io/docs/
+- What is Arcessa: https://arcessahq.github.io/docs/get-started/what-is-arcessa/
+- Quickstart: https://arcessahq.github.io/docs/get-started/quickstart/
+- First product tour: https://arcessahq.github.io/docs/get-started/first-tour/
+- Local development: https://arcessahq.github.io/docs/get-started/local-dev/
+
+## Concepts
+
+- Capability map: https://arcessahq.github.io/docs/concepts/capability-map/
+- Architecture: https://arcessahq.github.io/docs/concepts/architecture/
+- Request lifecycle: https://arcessahq.github.io/docs/concepts/request-lifecycle/
+- Auth model: https://arcessahq.github.io/docs/concepts/auth/
+
+## Developer console
+
+- Test tools and agents: https://arcessahq.github.io/docs/console/developer-console/
+
+## MCP
+
+- Connect MCP clients: https://arcessahq.github.io/docs/mcp/connect-clients/
+- Register tools: https://arcessahq.github.io/docs/mcp/register-tools/
+- Transports: https://arcessahq.github.io/docs/mcp/transports/
+
+## Identity and access
+
+- Auth model: https://arcessahq.github.io/docs/concepts/auth/
+- OAuth and tokens: https://arcessahq.github.io/docs/identity/oauth/
+- SSO and SCIM: https://arcessahq.github.io/docs/identity/sso-scim/
+
+## A2A
+
+- Agent gateway: https://arcessahq.github.io/docs/a2a/agent-gateway/
+
+## Governance and observability
+
+- Policies and approvals: https://arcessahq.github.io/docs/governance/policies/
+- Guardrails and budgets: https://arcessahq.github.io/docs/governance/guardrails/
+- Audit, usage, and SIEM: https://arcessahq.github.io/docs/observability/audit-usage-siem/
+
+## Operations
+
+- Production hardening: https://arcessahq.github.io/docs/security/production-hardening/
+- Docker and real stack: https://arcessahq.github.io/docs/deploy/docker/
+- Testing overview: https://arcessahq.github.io/docs/testing/overview/
+- API examples: https://arcessahq.github.io/docs/reference/api/
+- Configuration: https://arcessahq.github.io/docs/reference/configuration/
+- Troubleshooting: https://arcessahq.github.io/docs/troubleshooting/common-issues/
+
+## Terms
+
+Arcessa, MCP gateway, Model Context Protocol, A2A gateway, OAuth 2.1 authorization server, protected resource metadata, SCIM 2.0, SAML SSO, OIDC, AI tool governance, AI agent observability, SIEM export, guardrails, budgets.

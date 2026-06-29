@@ -1,0 +1,46 @@
+name: Documentation issue
+description: Report unclear, missing, stale, or incorrect documentation.
+title: "[Docs]: "
+labels:
+  - documentation
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page or file
+      description: Link to the docs page or path in this repository.
+      placeholder: https://arcessahq.github.io/docs/mcp/connect-clients/
+    validations:
+      required: true
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue type
+      options:
+        - Missing information
+        - Incorrect behavior
+        - Stale command
+        - Confusing explanation
+        - Broken link or navigation
+        - Search or agent indexing issue
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should the docs explain?
+      description: Describe the outcome a reader needs.
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What is currently wrong or missing?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Extra context
+      description: Add logs, screenshots, commands, or related product behavior. Do not include secrets.

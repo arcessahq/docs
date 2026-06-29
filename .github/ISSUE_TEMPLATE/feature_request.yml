@@ -1,0 +1,39 @@
+name: Documentation request
+description: Request a new guide, reference page, tutorial, or runbook.
+title: "[Request]: "
+labels:
+  - documentation
+  - enhancement
+body:
+  - type: textarea
+    id: audience
+    attributes:
+      label: Who is this for?
+      description: "Example: first-time developer, platform admin, security reviewer, SRE, enterprise buyer."
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: What should the reader be able to do?
+      description: Describe the workflow or decision the page should support.
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details to include
+      description: Add commands, product areas, protocols, providers, or examples that should be covered.
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: Product areas
+      options:
+        - label: MCP
+        - label: A2A
+        - label: OAuth or tokens
+        - label: OIDC, SAML, or SCIM
+        - label: Governance, guardrails, or budgets
+        - label: Observability or SIEM
+        - label: Deployment or testing
+        - label: Security or production hardening

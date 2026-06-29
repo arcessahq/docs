@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arcessahq.github.io/docs/sitemap.xml
+
+# Agent-oriented documentation index.
+LLM-Content: https://arcessahq.github.io/docs/llms.txt

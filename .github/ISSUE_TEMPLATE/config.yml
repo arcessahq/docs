@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security issue
+    url: https://github.com/arcessahq/docs/security/policy
+    about: Do not report vulnerabilities or credential leaks in public issues.
+  - name: Arcessa landing site
+    url: https://arcessahq.github.io/web/
+    about: Product overview and positioning.

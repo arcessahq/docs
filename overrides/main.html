@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
+  <meta name="application-name" content="Arcessa Docs">
+  <meta name="apple-mobile-web-app-title" content="Arcessa Docs">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="keywords" content="Arcessa, MCP gateway, Model Context Protocol, A2A gateway, OAuth 2.1, SCIM, SAML, OIDC, AI tools governance, agent gateway, AI observability">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arcessa Docs">
+  <meta property="og:title" content="{{ page.title | striptags if page and page.title else config.site_name }}">
+  <meta property="og:description" content="{{ page.meta.description if page.meta and page.meta.description else config.site_description }}">
+  <meta property="og:url" content="{{ page.canonical_url if page and page.canonical_url else config.site_url }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title | striptags if page and page.title else config.site_name }}">
+  <meta name="twitter:description" content="{{ page.meta.description if page.meta and page.meta.description else config.site_description }}">
+  <link rel="alternate" type="text/plain" title="Arcessa Docs for AI agents" href="{{ 'llms.txt' | url }}">
+  <link rel="alternate" type="text/html" title="Arcessa landing site" href="https://arcessahq.github.io/web/">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ 'sitemap.xml' | url }}">
+{% endblock %}
